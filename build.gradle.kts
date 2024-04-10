@@ -1,4 +1,5 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
+/*
 buildscript {
     val kotlinVersion by extra("1.6.10")
     repositories {
@@ -23,4 +24,13 @@ allprojects {
 
 tasks.register<Delete>("clean") {
     delete(rootProject.buildDir)
+}
+*/
+plugins {
+    alias(libs.plugins.androidApplication) apply false
+    alias(libs.plugins.jetbrainsKotlinAndroid) apply false
+    id("com.google.devtools.ksp") version "1.9.23-1.0.19" apply false
+
+
+
 }

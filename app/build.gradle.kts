@@ -1,17 +1,16 @@
-import java.util.Properties
 import com.android.build.api.dsl.AndroidSourceSet
 
 plugins {
-    id("com.android.application")
-    kotlin("android")
-    kotlin("kapt")
+    alias(libs.plugins.androidApplication)
+    alias(libs.plugins.jetbrainsKotlinAndroid)
+    id("com.google.devtools.ksp")
+
 }
 
 val composeVersion = "1.1.1"
 
 android {
-    compileSdk = 31
-    buildToolsVersion = "30.0.3"
+    compileSdk = 34
 
     namespace = "io.eugenethedev.taigamobile"
 
@@ -39,9 +38,9 @@ android {
                 it.load(file("./signing.properties").inputStream())
             }
             storeFile = file("./keystores/release.keystore")
-            storePassword = properties.getProperty("password")
-            keyAlias = properties.getProperty("alias")
-            keyPassword = properties.getProperty("password")
+            storePassword = properties["password"] as String?
+            keyAlias = properties.get("alias") as String?
+            keyPassword = properties.get("password") as String?
         }
     }
 
@@ -152,7 +151,7 @@ dependencies {
     // Moshi
     val moshiVersion = "1.13.0"
     implementation("com.squareup.moshi:moshi:$moshiVersion")
-    kapt("com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion")
+    ksp("com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion")
 
     // Retrofit 2
     val retrofitVersion = "2.9.0"
@@ -167,8 +166,8 @@ dependencies {
     // Dagger 2
     val daggerVersion = "2.42"
     implementation("com.google.dagger:dagger-android:$daggerVersion")
-    kapt("com.google.dagger:dagger-android-processor:$daggerVersion")
-    kapt("com.google.dagger:dagger-compiler:$daggerVersion")
+    ksp("com.google.dagger:dagger-android-processor:$daggerVersion")
+    ksp("com.google.dagger:dagger-compiler:$daggerVersion")
 
     // Timber
     implementation("com.jakewharton.timber:timber:5.0.1")
