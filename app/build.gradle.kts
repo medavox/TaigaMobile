@@ -34,9 +34,6 @@ android {
         }
 
         create("release") {
-            val properties = Properties().also {
-                it.load(file("./signing.properties").inputStream())
-            }
             storeFile = file("./keystores/release.keystore")
             storePassword = properties["password"] as String?
             keyAlias = properties.get("alias") as String?
