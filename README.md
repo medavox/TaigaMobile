@@ -1,5 +1,3 @@
-# ⚠️ Archived ⚠️
-This repository has been archived and is no longer maintained.
 # TaigaMobile
 <a href='https://play.google.com/store/apps/details?id=io.eugenethedev.taigamobile&utm_source=github'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png' width=300/></a>
 
