@@ -84,7 +84,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = composeVersion
+        kotlinCompilerExtensionVersion = "1.5.11"
     }
 
     lint { 
@@ -100,9 +100,9 @@ dependencies {
 
     implementation(kotlin("reflect"))
 
-    implementation("androidx.core:core-ktx:1.7.0")
-    implementation("androidx.appcompat:appcompat:1.4.1")
-    implementation("com.google.android.material:material:1.6.0")
+    implementation(libs.androidx.core.ktx.v170)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.material)
 
     // ============================================================================================
     // CAREFUL WHEN UPDATING COMPOSE RELATED DEPENDENCIES - THEY CAN USE DIFFERENT COMPOSE VERSION!
@@ -112,70 +112,70 @@ dependencies {
     implementation("androidx.compose.ui:ui:$composeVersion")
     implementation("androidx.compose.material:material:$composeVersion")
     // Material You
-    implementation("androidx.compose.material3:material3:1.0.0-alpha09")
+    implementation("androidx.compose.material3:material3:1.2.1")
     implementation("androidx.compose.ui:ui-tooling:$composeVersion")
     implementation("androidx.compose.animation:animation:$composeVersion")
     // compose activity
-    implementation("androidx.activity:activity-compose:1.4.0")
+    implementation(libs.androidx.activity.compose)
     // view model support
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.4.1")
+    implementation(libs.androidx.lifecycle.viewmodel.compose.v241)
     // compose constraint layout
-    implementation("androidx.constraintlayout:constraintlayout-compose:1.0.1")
+    implementation(libs.androidx.constraintlayout.compose)
 
     // Accompanist
     val accompanistVersion = "0.23.1"
-    implementation("com.google.accompanist:accompanist-pager:$accompanistVersion")
-    implementation("com.google.accompanist:accompanist-pager-indicators:$accompanistVersion")
-    implementation("com.google.accompanist:accompanist-systemuicontroller:$accompanistVersion")
-    implementation("com.google.accompanist:accompanist-insets:$accompanistVersion")
-    implementation("com.google.accompanist:accompanist-flowlayout:$accompanistVersion")
+    implementation(libs.accompanist.pager)
+    implementation(libs.accompanist.pager.indicators)
+    implementation(libs.accompanist.systemuicontroller)
+    implementation(libs.accompanist.insets)
+    implementation(libs.accompanist.flowlayout)
 
     // Coil
-    implementation("io.coil-kt:coil-compose:1.3.2")
+    implementation(libs.coil.compose)
 
     // Navigation Component (with Compose)
-    implementation("androidx.navigation:navigation-compose:2.5.0-rc01")
+    implementation(libs.androidx.navigation.compose)
 
     // Paging (with Compose)
-    implementation("androidx.paging:paging-compose:1.0.0-alpha14")
+    implementation(libs.androidx.paging.compose)
 
     // Coroutines
-    val coroutinesVersion = "1.6.2"
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion")
-    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesVersion")
+    val coroutinesVersion = "1.7.3"
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.kotlinx.coroutines.android)
+    testImplementation(libs.kotlinx.coroutines.test)
 
     // Moshi
-    val moshiVersion = "1.13.0"
-    implementation("com.squareup.moshi:moshi:$moshiVersion")
-    ksp("com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion")
+    val moshiVersion = "1.14.0"
+    implementation(libs.moshi.v1140)
+    ksp(libs.moshi.kotlin.codegen.v1140)
 
     // Retrofit 2
     val retrofitVersion = "2.9.0"
-    implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
-    implementation("com.squareup.retrofit2:converter-moshi:$retrofitVersion")
+    implementation(libs.retrofit)
+    implementation(libs.converter.moshi)
 
     // OkHttp
-    val okHttpVersion = "4.9.3"
-    implementation("com.squareup.okhttp3:okhttp:$okHttpVersion")
-    implementation("com.squareup.okhttp3:logging-interceptor:$okHttpVersion")
+    val okHttpVersion = "4.12.0"
+    implementation(libs.okhttp)
+    implementation(libs.logging.interceptor)
 
     // Dagger 2
     val daggerVersion = "2.42"
-    implementation("com.google.dagger:dagger-android:$daggerVersion")
-    ksp("com.google.dagger:dagger-android-processor:$daggerVersion")
-    ksp("com.google.dagger:dagger-compiler:$daggerVersion")
+    implementation(libs.dagger.android)
+    ksp(libs.dagger.android.processor)
+    ksp(libs.dagger.compiler)
 
     // Timber
-    implementation("com.jakewharton.timber:timber:5.0.1")
+    implementation(libs.timber)
 
     // Markdown support (Markwon)
     val markwonVersion = "4.6.2"
-    implementation("io.noties.markwon:core:$markwonVersion")
-    implementation("io.noties.markwon:image-coil:$markwonVersion")
+    implementation(libs.core)
+    implementation(libs.image.coil)
 
     // Compose material dialogs (color picker)
-    implementation("io.github.vanpra.compose-material-dialogs:color:0.7.0")
+    implementation(libs.color)
 
     /**
      * Test frameworks & dependencies
@@ -183,22 +183,22 @@ dependencies {
     allTestsImplementation(kotlin("test-junit"))
 
     // Robolectric (run android tests on local host)
-    testRuntimeOnly("org.robolectric:robolectric:4.8.1")
+    testRuntimeOnly(libs.robolectric)
 
-    allTestsImplementation("androidx.test:core-ktx:1.4.0")
-    allTestsImplementation("androidx.test:runner:1.4.0")
-    allTestsImplementation("androidx.test.ext:junit-ktx:1.1.3")
+    allTestsImplementation(libs.core.ktx)
+    allTestsImplementation(libs.androidx.runner)
+    allTestsImplementation(libs.androidx.junit.ktx)
 
     // since we need to connect to test db instance
     val postgresDriverVersion = "42.3.6"
-    testRuntimeOnly("org.postgresql:postgresql:$postgresDriverVersion")
-    androidTestRuntimeOnly("org.postgresql:postgresql:$postgresDriverVersion")
+    testRuntimeOnly(libs.postgresql)
+    androidTestRuntimeOnly(libs.postgresql)
 
     // manual json parsing when filling test instance
-    implementation("com.google.code.gson:gson:2.9.0")
+    implementation(libs.gson)
 
     // MockK
-    testImplementation("io.mockk:mockk:1.12.4")
+    testImplementation(libs.mockk)
 }
 
 fun DependencyHandler.allTestsImplementation(dependencyNotation: Any) {
