@@ -125,7 +125,6 @@ dependencies {
     implementation(libs.androidx.constraintlayout.compose)
 
     // Accompanist
-    val accompanistVersion = "0.23.1"
     implementation(libs.accompanist.pager)
     implementation(libs.accompanist.pager.indicators)
     implementation(libs.accompanist.systemuicontroller)
@@ -142,23 +141,19 @@ dependencies {
     implementation(libs.androidx.paging.compose)
 
     // Coroutines
-    val coroutinesVersion = "1.7.3"
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.android)
     testImplementation(libs.kotlinx.coroutines.test)
 
     // Moshi
-    val moshiVersion = "1.14.0"
     implementation(libs.moshi.v1140)
     ksp(libs.moshi.kotlin.codegen.v1140)
 
     // Retrofit 2
-    val retrofitVersion = "2.9.0"
     implementation(libs.retrofit)
     implementation(libs.converter.moshi)
 
     // OkHttp
-    val okHttpVersion = "4.12.0"
     implementation(libs.okhttp)
     implementation(libs.logging.interceptor)
 
@@ -172,7 +167,6 @@ dependencies {
     implementation(libs.timber)
 
     // Markdown support (Markwon)
-    val markwonVersion = "4.6.2"
     implementation(libs.core)
     implementation(libs.image.coil)
 
