@@ -15,7 +15,7 @@ import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class TeamViewModel(appComponent: AppComponent = TaigaApp.appComponent) : ViewModel() {
+class TeamViewModel : ViewModel() {
     @Inject lateinit var usersRepository: IUsersRepository
     @Inject lateinit var session: Session
 
@@ -23,10 +23,6 @@ class TeamViewModel(appComponent: AppComponent = TaigaApp.appComponent) : ViewMo
     val team = MutableResultFlow<List<TeamMember>?>()
 
     private var shouldReload = true
-
-    init {
-        appComponent.inject(this)
-    }
 
     fun onOpen() {
         if (!shouldReload) return

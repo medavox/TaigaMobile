@@ -11,16 +11,12 @@ import io.eugenethedev.taigamobile.ui.utils.loadOrError
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class WikiCreatePageViewModel(appComponent: AppComponent = TaigaApp.appComponent) : ViewModel() {
+class WikiCreatePageViewModel : ViewModel() {
 
     @Inject
     lateinit var wikiRepository: IWikiRepository
 
     val creationResult = MutableResultFlow<WikiPage>()
-
-    init {
-        appComponent.inject(this)
-    }
 
     fun createWikiPage(title: String, content: String) = viewModelScope.launch {
         creationResult.loadOrError {

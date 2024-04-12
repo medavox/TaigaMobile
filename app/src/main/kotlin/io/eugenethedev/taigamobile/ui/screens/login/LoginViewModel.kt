@@ -12,14 +12,10 @@ import io.eugenethedev.taigamobile.ui.utils.loadOrError
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class LoginViewModel(appComponent: AppComponent = TaigaApp.appComponent) : ViewModel() {
+class LoginViewModel : ViewModel() {
     @Inject lateinit var authRepository: IAuthRepository
 
     val loginResult = MutableResultFlow<Unit>()
-
-    init {
-        appComponent.inject(this)
-    }
 
     fun login(taigaServer: String, authType: AuthType, username: String, password: String) = viewModelScope.launch {
         loginResult.loadOrError(R.string.login_error_message) {

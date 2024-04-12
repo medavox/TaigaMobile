@@ -22,17 +22,13 @@ import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class IssuesViewModel(appComponent: AppComponent = TaigaApp.appComponent) : ViewModel() {
+class IssuesViewModel : ViewModel() {
     @Inject lateinit var session: Session
     @Inject lateinit var tasksRepository: ITasksRepository
 
     val projectName by lazy { session.currentProjectName }
 
     private var shouldReload = true
-
-    init {
-        appComponent.inject(this)
-    }
     
     fun onOpen() {
         if (!shouldReload) return

@@ -25,7 +25,7 @@ import kotlinx.coroutines.launch
 import java.time.LocalDate
 import javax.inject.Inject
 
-class SprintViewModel(appComponent: AppComponent = TaigaApp.appComponent) : ViewModel() {
+class SprintViewModel : ViewModel() {
     @Inject lateinit var tasksRepository: ITasksRepository
     @Inject lateinit var sprintsRepository: ISprintsRepository
     @Inject lateinit var session: Session
@@ -39,10 +39,6 @@ class SprintViewModel(appComponent: AppComponent = TaigaApp.appComponent) : View
     val issues = MutableResultFlow<List<CommonTask>>()
 
     private var shouldReload = true
-
-    init {
-        appComponent.inject(this)
-    }
 
     fun onOpen(sprintId: Long) {
         if (!shouldReload) return

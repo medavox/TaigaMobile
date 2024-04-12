@@ -23,7 +23,7 @@ import kotlinx.coroutines.launch
 import java.time.LocalDate
 import javax.inject.Inject
 
-class ScrumViewModel(appComponent: AppComponent = TaigaApp.appComponent) : ViewModel() {
+class ScrumViewModel : ViewModel() {
     @Inject lateinit var tasksRepository: ITasksRepository
     @Inject lateinit var sprintsRepository: ISprintsRepository
     @Inject lateinit var session: Session
@@ -32,9 +32,6 @@ class ScrumViewModel(appComponent: AppComponent = TaigaApp.appComponent) : ViewM
 
     private var shouldReload = true
 
-    init {
-        appComponent.inject(this)
-    }
 
     fun onOpen() {
         if (!shouldReload) return

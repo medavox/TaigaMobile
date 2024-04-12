@@ -17,7 +17,7 @@ import kotlinx.coroutines.joinAll
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class KanbanViewModel(appComponent: AppComponent = TaigaApp.appComponent) : ViewModel() {
+class KanbanViewModel : ViewModel() {
     @Inject lateinit var tasksRepository: ITasksRepository
     @Inject lateinit var usersRepository: IUsersRepository
     @Inject lateinit var session: Session
@@ -33,9 +33,6 @@ class KanbanViewModel(appComponent: AppComponent = TaigaApp.appComponent) : View
 
     private var shouldReload = true
 
-    init {
-        appComponent.inject(this)
-    }
 
     fun onOpen() = viewModelScope.launch {
         if (!shouldReload) return@launch

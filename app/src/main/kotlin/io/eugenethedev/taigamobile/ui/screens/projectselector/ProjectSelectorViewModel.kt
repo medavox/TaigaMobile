@@ -16,15 +16,12 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.flatMapLatest
 import javax.inject.Inject
 
-class ProjectSelectorViewModel(appComponent: AppComponent = TaigaApp.appComponent) : ViewModel() {
+class ProjectSelectorViewModel : ViewModel() {
     @Inject lateinit var projectsRepository: IProjectsRepository
     @Inject lateinit var session: Session
 
     val currentProjectId by lazy { session.currentProjectId }
 
-    init {
-        appComponent.inject(this)
-    }
 
     fun onOpen() {
         projects.refresh()

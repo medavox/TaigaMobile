@@ -13,7 +13,7 @@ import io.eugenethedev.taigamobile.ui.utils.loadOrError
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class WikiListViewModel(appComponent: AppComponent = TaigaApp.appComponent) : ViewModel() {
+class WikiListViewModel : ViewModel() {
 
     @Inject
     lateinit var session: Session
@@ -25,10 +25,6 @@ class WikiListViewModel(appComponent: AppComponent = TaigaApp.appComponent) : Vi
 
     val wikiPages = MutableResultFlow<List<WikiPage>>()
     val wikiLinks = MutableResultFlow<List<WikiLink>>()
-
-    init {
-        appComponent.inject(this)
-    }
 
     fun onOpen() {
         getWikiPage()

@@ -14,13 +14,9 @@ import io.eugenethedev.taigamobile.ui.utils.loadOrError
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class CreateTaskViewModel(appComponent: AppComponent = TaigaApp.appComponent) : ViewModel() {
+class CreateTaskViewModel : ViewModel() {
     @Inject lateinit var tasksRepository: ITasksRepository
     @Inject lateinit var session: Session
-
-    init {
-        appComponent.inject(this)
-    }
 
     val creationResult = MutableResultFlow<CommonTask>()
 

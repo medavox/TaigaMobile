@@ -5,7 +5,6 @@ import android.util.Log
 import com.google.android.material.color.DynamicColors
 import io.eugenethedev.taigamobile.BuildConfig
 import io.eugenethedev.taigamobile.dagger.AppComponent
-import io.eugenethedev.taigamobile.dagger.DaggerAppComponent
 import io.eugenethedev.taigamobile.utils.FileLoggingTree
 import timber.log.Timber
 
@@ -18,9 +17,6 @@ class TaigaApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        appComponent = DaggerAppComponent.builder()
-            .context(this)
-            .build()
 
         // logging configs
         val minLoggingPriority = if (BuildConfig.DEBUG) {
@@ -41,7 +37,4 @@ class TaigaApp : Application() {
         DynamicColors.applyToActivitiesIfAvailable(this)
     }
 
-    companion object {
-        lateinit var appComponent: AppComponent
-    }
 }

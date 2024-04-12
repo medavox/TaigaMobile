@@ -7,7 +7,7 @@ import io.eugenethedev.taigamobile.TaigaApp
 import io.eugenethedev.taigamobile.dagger.AppComponent
 import javax.inject.Inject
 
-class MainViewModel(appComponent: AppComponent = TaigaApp.appComponent) : ViewModel() {
+class MainViewModel : ViewModel() {
     @Inject lateinit var session: Session
     @Inject lateinit var settings: Settings
 
@@ -16,7 +16,4 @@ class MainViewModel(appComponent: AppComponent = TaigaApp.appComponent) : ViewMo
 
     val theme by lazy { settings.themeSetting }
 
-    init {
-        appComponent.inject(this)
-    }
 }

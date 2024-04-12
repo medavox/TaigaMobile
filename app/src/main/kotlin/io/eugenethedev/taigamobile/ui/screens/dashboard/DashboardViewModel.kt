@@ -18,7 +18,7 @@ import kotlinx.coroutines.joinAll
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class DashboardViewModel(appComponent: AppComponent = TaigaApp.appComponent) : ViewModel() {
+class DashboardViewModel : ViewModel() {
     @Inject lateinit var tasksRepository: ITasksRepository
     @Inject lateinit var projectsRepository: IProjectsRepository
     @Inject lateinit var session: Session
@@ -30,10 +30,6 @@ class DashboardViewModel(appComponent: AppComponent = TaigaApp.appComponent) : V
     val currentProjectId by lazy { session.currentProjectId }
 
     private var shouldReload = true
-
-    init {
-        appComponent.inject(this)
-    }
 
     fun onOpen() = viewModelScope.launch {
         if (!shouldReload) return@launch

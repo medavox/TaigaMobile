@@ -22,7 +22,7 @@ import java.io.InputStream
 import java.time.LocalDate
 import javax.inject.Inject
 
-class CommonTaskViewModel(appComponent: AppComponent = TaigaApp.appComponent) : ViewModel() {
+class CommonTaskViewModel : ViewModel() {
     @Inject lateinit var session: Session
     @Inject lateinit var tasksRepository: ITasksRepository
     @Inject lateinit var usersRepository: IUsersRepository
@@ -58,9 +58,6 @@ class CommonTaskViewModel(appComponent: AppComponent = TaigaApp.appComponent) : 
         .stateIn(viewModelScope, SharingStarted.Lazily, false)
     val projectName by lazy { session.currentProjectName }
 
-    init {
-        appComponent.inject(this)
-    }
 
     fun onOpen(commonTaskId: Long, commonTaskType: CommonTaskType) {
         this.commonTaskId = commonTaskId

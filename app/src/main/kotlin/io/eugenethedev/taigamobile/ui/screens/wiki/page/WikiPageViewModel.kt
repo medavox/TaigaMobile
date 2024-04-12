@@ -19,7 +19,7 @@ import kotlinx.coroutines.launch
 import java.io.InputStream
 import javax.inject.Inject
 
-class WikiPageViewModel(appComponent: AppComponent = TaigaApp.appComponent) : ViewModel() {
+class WikiPageViewModel : ViewModel() {
 
     @Inject
     lateinit var wikiRepository: IWikiRepository
@@ -36,10 +36,6 @@ class WikiPageViewModel(appComponent: AppComponent = TaigaApp.appComponent) : Vi
     val deleteWikiPageResult = MutableResultFlow<Unit>()
 
     var lastModifierUser = MutableStateFlow<User?>(null)
-
-    init {
-        appComponent.inject(this)
-    }
 
     fun onOpen(slug: String) {
         pageSlug = slug

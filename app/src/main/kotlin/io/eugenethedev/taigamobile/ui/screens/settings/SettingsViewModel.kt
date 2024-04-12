@@ -12,7 +12,7 @@ import io.eugenethedev.taigamobile.ui.utils.loadOrError
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class SettingsViewModel(appComponent: AppComponent = TaigaApp.appComponent) : ViewModel() {
+class SettingsViewModel : ViewModel() {
     @Inject lateinit var session: Session
     @Inject lateinit var settings: Settings
     @Inject lateinit var userRepository: IUsersRepository
@@ -22,9 +22,6 @@ class SettingsViewModel(appComponent: AppComponent = TaigaApp.appComponent) : Vi
 
     val themeSetting by lazy { settings.themeSetting }
 
-    init {
-        appComponent.inject(this)
-    }
 
     fun onOpen() = viewModelScope.launch {
         user.loadOrError(preserveValue = false) { userRepository.getMe() }

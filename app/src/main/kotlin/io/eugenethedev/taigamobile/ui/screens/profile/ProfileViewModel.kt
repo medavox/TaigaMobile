@@ -15,7 +15,7 @@ import io.eugenethedev.taigamobile.ui.utils.loadOrError
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class ProfileViewModel(appComponent: AppComponent = TaigaApp.appComponent) : ViewModel() {
+class ProfileViewModel : ViewModel() {
     @Inject
     lateinit var usersRepository: IUsersRepository
 
@@ -30,9 +30,6 @@ class ProfileViewModel(appComponent: AppComponent = TaigaApp.appComponent) : Vie
     val currentUserProjects = MutableResultFlow<List<Project>>()
     val currentProjectId by lazy { session.currentProjectId }
 
-    init {
-        appComponent.inject(this)
-    }
 
     fun onOpen(userId: Long) = viewModelScope.launch {
         currentUser.loadOrError { usersRepository.getUser(userId) }
