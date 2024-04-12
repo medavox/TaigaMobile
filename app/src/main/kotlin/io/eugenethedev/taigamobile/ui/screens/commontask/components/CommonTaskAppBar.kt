@@ -22,7 +22,6 @@ import io.eugenethedev.taigamobile.ui.components.editors.TextFieldWithHint
 import io.eugenethedev.taigamobile.ui.screens.commontask.EditActions
 import io.eugenethedev.taigamobile.ui.screens.commontask.NavigationActions
 import io.eugenethedev.taigamobile.ui.theme.dialogTonalElevation
-import io.eugenethedev.taigamobile.ui.utils.surfaceColorAtElevation
 
 @Composable
 fun CommonTaskAppBar(

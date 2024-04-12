@@ -6,6 +6,7 @@ import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.surfaceColorAtElevation
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -16,7 +17,6 @@ import io.eugenethedev.taigamobile.domain.entities.DueDateStatus
 import io.eugenethedev.taigamobile.ui.components.pickers.DatePicker
 import io.eugenethedev.taigamobile.ui.screens.commontask.EditActions
 import io.eugenethedev.taigamobile.ui.theme.*
-import io.eugenethedev.taigamobile.ui.utils.surfaceColorAtElevation
 
 @Suppress("FunctionName")
 fun LazyListScope.CommonTaskDueDate(

@@ -15,7 +15,6 @@ import androidx.compose.ui.res.painterResource
 import io.eugenethedev.taigamobile.R
 import io.eugenethedev.taigamobile.ui.theme.dialogTonalElevation
 import io.eugenethedev.taigamobile.ui.utils.clickableUnindicated
-import io.eugenethedev.taigamobile.ui.utils.surfaceColorAtElevation
 
 /**
  * Dropdown selector with animated arrow

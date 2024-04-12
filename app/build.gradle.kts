@@ -17,6 +17,7 @@ android {
     defaultConfig {
         applicationId = namespace!!
         minSdk = 21
+        //noinspection ExpiredTargetSdkVersion
         targetSdk = 31
         versionCode = 29
         versionName = "1.9"

@@ -21,7 +21,6 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
-import androidx.paging.compose.itemsIndexed as itemsIndexedLazy
 import com.google.accompanist.insets.navigationBarsHeight
 import io.eugenethedev.taigamobile.ui.components.appbars.AppBarWithBackButton
 import io.eugenethedev.taigamobile.ui.components.loaders.DotsLoader
@@ -101,6 +100,7 @@ fun <T : Any> SelectorList(
         )
 
         LazyColumn {
+/*
             itemsLazy?.let {
                 itemsIndexedLazy(
                     items = it,
@@ -108,6 +108,7 @@ fun <T : Any> SelectorList(
                     itemContent = listItemContent
                 )
             } ?: itemsIndexed(items, itemContent = listItemContent)
+*/
 
             item {
                 if (isLoading) {

@@ -14,6 +14,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.surfaceColorAtElevation
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -48,7 +49,6 @@ import io.eugenethedev.taigamobile.ui.utils.LoadingResult
 import io.eugenethedev.taigamobile.ui.utils.SuccessResult
 import io.eugenethedev.taigamobile.ui.utils.navigateToProfileScreen
 import io.eugenethedev.taigamobile.ui.utils.subscribeOnError
-import io.eugenethedev.taigamobile.ui.utils.surfaceColorAtElevation
 import java.io.InputStream
 import java.time.LocalDateTime
 

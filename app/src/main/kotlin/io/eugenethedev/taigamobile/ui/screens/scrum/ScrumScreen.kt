@@ -9,6 +9,7 @@ import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -16,7 +17,6 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
-import androidx.paging.compose.items
 import com.google.accompanist.insets.navigationBarsHeight
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.rememberPagerState
@@ -215,13 +215,13 @@ private fun SprintsTabContent(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        items(openSprints, key = { it.id }) {
+/*        items(openSprints, key = { it.id }) {
             if (it == null) return@items
             SprintItem(
                 sprint = it,
                 navigateToBoard = navigateToBoard
             )
-        }
+        }*/
 
         item {
             if (openSprints.loadState.refresh is LoadState.Loading || openSprints.loadState.append is LoadState.Loading) {
@@ -236,13 +236,13 @@ private fun SprintsTabContent(
         }
 
         if (isClosedSprintsVisible) {
-            items(closedSprints, key = { it.id }) {
+/*            items(closedSprints, key = { it.id }) {
                 if (it == null) return@items
                 SprintItem(
                     sprint = it,
                     navigateToBoard = navigateToBoard
                 )
-            }
+            }*/
 
             item {
                 if (closedSprints.loadState.refresh is LoadState.Loading || closedSprints.loadState.append is LoadState.Loading) {
@@ -306,15 +306,15 @@ private fun SprintItem(
         }
 
         buttonColors().let {
-            val containerColor by it.containerColor(!sprint.isClosed)
-            val contentColor by it.contentColor(!sprint.isClosed)
+//            val containerColor by it.containerColor(!sprint.isClosed)
+//            val contentColor by it.contentColor(!sprint.isClosed)
 
             Button(
                 onClick = { navigateToBoard(sprint) },
                 modifier = Modifier.weight(0.3f),
                 colors = buttonColors(
-                    containerColor = containerColor,
-                    contentColor = contentColor
+                    containerColor = Color.Black,
+                    contentColor = Color.Black
                 )
             ) {
                 Text(stringResource(R.string.taskboard))

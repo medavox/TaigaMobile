@@ -3,6 +3,7 @@ package io.eugenethedev.taigamobile
 import android.app.Application
 import android.util.Log
 import com.google.android.material.color.DynamicColors
+import io.eugenethedev.taigamobile.BuildConfig
 import io.eugenethedev.taigamobile.dagger.AppComponent
 import io.eugenethedev.taigamobile.dagger.DaggerAppComponent
 import io.eugenethedev.taigamobile.utils.FileLoggingTree
