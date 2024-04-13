@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.insertHeaderItem
+import dagger.hilt.android.AndroidEntryPoint
 import io.eugenethedev.taigamobile.R
 import io.eugenethedev.taigamobile.state.Session
 import io.eugenethedev.taigamobile.TaigaApp
@@ -22,6 +23,7 @@ import java.io.InputStream
 import java.time.LocalDate
 import javax.inject.Inject
 
+@AndroidEntryPoint
 class CommonTaskViewModel : ViewModel() {
     @Inject lateinit var session: Session
     @Inject lateinit var tasksRepository: ITasksRepository

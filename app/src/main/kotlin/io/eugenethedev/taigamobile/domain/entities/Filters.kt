@@ -1,8 +1,8 @@
 package io.eugenethedev.taigamobile.domain.entities
 
-import com.squareup.moshi.JsonClass
+import kotlinx.serialization.Serializable
 
-@JsonClass(generateAdapter = true)
+@Serializable
 data class FiltersData(
     val query: String = "",
     val assignees: List<UsersFilter> = emptyList(),
@@ -83,7 +83,7 @@ sealed interface Filter {
     val color: String?
 }
 
-@JsonClass(generateAdapter = true)
+@Serializable
 data class StatusesFilter(
     override val id: Long,
     override val color: String,
@@ -91,7 +91,7 @@ data class StatusesFilter(
     override val count: Int
 ) : Filter
 
-@JsonClass(generateAdapter = true)
+@Serializable
 data class UsersFilter(
     override val id: Long?,
     override val name: String,
@@ -100,7 +100,7 @@ data class UsersFilter(
     override val color: String? = null
 }
 
-@JsonClass(generateAdapter = true)
+@Serializable
 data class RolesFilter(
     override val id: Long,
     override val name: String,
@@ -109,7 +109,7 @@ data class RolesFilter(
     override val color: String? = null
 }
 
-@JsonClass(generateAdapter = true)
+@Serializable
 data class TagsFilter(
     override val name: String,
     override val color: String,
@@ -118,7 +118,7 @@ data class TagsFilter(
     override val id: Long? = null
 }
 
-@JsonClass(generateAdapter = true)
+@Serializable
 data class EpicsFilter(
     override val id: Long?,
     override val name: String,

@@ -1,19 +1,19 @@
 package io.eugenethedev.taigamobile.domain.entities
 
-import com.squareup.moshi.Json
-import com.squareup.moshi.JsonClass
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.JsonNames
 import java.time.LocalDate
 
-@JsonClass(generateAdapter = false)
+@Serializable
 enum class CustomFieldType {
-    @Json(name = "text") Text,
-    @Json(name = "multiline") Multiline,
-    @Json(name = "richtext") RichText,
-    @Json(name = "date") Date,
-    @Json(name = "url") Url,
-    @Json(name = "dropdown") Dropdown,
-    @Json(name = "number") Number,
-    @Json(name = "checkbox") Checkbox
+    @JsonNames("text") Text,
+    @JsonNames("multiline") Multiline,
+    @JsonNames("richtext") RichText,
+    @JsonNames("date") Date,
+    @JsonNames("url") Url,
+    @JsonNames("dropdown") Dropdown,
+    @JsonNames("number") Number,
+    @JsonNames("checkbox") Checkbox
 }
 
 data class CustomField(

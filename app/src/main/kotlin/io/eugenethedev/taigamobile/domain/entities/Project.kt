@@ -1,24 +1,24 @@
 package io.eugenethedev.taigamobile.domain.entities
 
-import com.squareup.moshi.Json
-import com.squareup.moshi.JsonClass
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.JsonNames
 
 /**
  * Project related entities
  */
 
-@JsonClass(generateAdapter = true)
+@Serializable
 data class Project(
     val id: Long,
     val name: String,
     val slug: String,
-    @Json(name = "i_am_member") val isMember: Boolean = false,
-    @Json(name = "i_am_admin") val isAdmin: Boolean = false,
-    @Json(name = "i_am_owner") val isOwner: Boolean = false,
+    @JsonNames("i_am_member") val isMember: Boolean = false,
+    @JsonNames("i_am_admin") val isAdmin: Boolean = false,
+    @JsonNames("i_am_owner") val isOwner: Boolean = false,
     val description: String? = null,
-    @Json(name = "logo_small_url") val avatarUrl: String? = null,
+    @JsonNames("logo_small_url") val avatarUrl: String? = null,
     val members: List<Long> = emptyList(),
-    @Json(name = "total_fans") val fansCount: Int = 0,
-    @Json(name = "total_watchers") val watchersCount: Int = 0,
-    @Json(name = "is_private") val isPrivate: Boolean = false
+    @JsonNames("total_fans") val fansCount: Int = 0,
+    @JsonNames("total_watchers") val watchersCount: Int = 0,
+    @JsonNames("is_private") val isPrivate: Boolean = false
 )

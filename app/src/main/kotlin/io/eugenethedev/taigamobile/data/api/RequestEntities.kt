@@ -1,21 +1,23 @@
 package io.eugenethedev.taigamobile.data.api
 
-import com.squareup.moshi.JsonClass
+import io.eugenethedev.taigamobile.dagger.DateSerializer
+import io.eugenethedev.taigamobile.dagger.DateTimeSerializer
+import kotlinx.serialization.Serializable
 import java.time.LocalDate
 
-@JsonClass(generateAdapter = true)
+@Serializable
 data class AuthRequest(
     val password: String,
     val username: String,
     val type: String
 )
 
-@JsonClass(generateAdapter = true)
+@Serializable
 data class RefreshTokenRequest(
     val refresh: String
 )
 
-@JsonClass(generateAdapter = true)
+@Serializable
 data class EditCommonTaskRequest(
     val subject: String,
     val description: String,
@@ -28,6 +30,7 @@ data class EditCommonTaskRequest(
     val assigned_users: List<Long>,
     val watchers: List<Long>,
     val swimlane: Long?,
+    @Serializable(with = DateSerializer::class)
     val due_date: LocalDate?,
     val color: String?,
     val tags: List<List<String>>,
@@ -36,13 +39,13 @@ data class EditCommonTaskRequest(
     val version: Int
 )
 
-@JsonClass(generateAdapter = true)
+@Serializable
 data class CreateCommentRequest(
     val comment: String,
     val version: Int
 )
 
-@JsonClass(generateAdapter = true)
+@Serializable
 data class CreateCommonTaskRequest(
     val project: Long,
     val subject: String,
@@ -50,7 +53,7 @@ data class CreateCommonTaskRequest(
     val status: Long?
 )
 
-@JsonClass(generateAdapter = true)
+@Serializable
 data class CreateTaskRequest(
     val project: Long,
     val subject: String,
@@ -59,7 +62,7 @@ data class CreateTaskRequest(
     val user_story: Long?
 )
 
-@JsonClass(generateAdapter = true)
+@Serializable
 data class CreateIssueRequest(
     val project: Long,
     val subject: String,
@@ -67,7 +70,7 @@ data class CreateIssueRequest(
     val milestone: Long?,
 )
 
-@JsonClass(generateAdapter = true)
+@Serializable
 data class CreateUserStoryRequest(
     val project: Long,
     val subject: String,
@@ -76,45 +79,49 @@ data class CreateUserStoryRequest(
     val swimlane: Long?
 )
 
-@JsonClass(generateAdapter = true)
+@Serializable
 data class LinkToEpicRequest(
     val epic: String,
     val user_story: Long
 )
 
-@JsonClass(generateAdapter = true)
+@Serializable
 data class PromoteToUserStoryRequest(
     val project_id: Long
 )
 
-@JsonClass(generateAdapter = true)
+@Serializable
 data class EditCustomAttributesValuesRequest(
     val attributes_values: Map<Long, Any?>,
     val version: Int
 )
 
-@JsonClass(generateAdapter = true)
+@Serializable
 data class CreateSprintRequest(
     val name: String,
+    @Serializable(with = DateSerializer::class)
     val estimated_start: LocalDate,
+    @Serializable(with = DateSerializer::class)
     val estimated_finish: LocalDate,
     val project: Long
 )
 
-@JsonClass(generateAdapter = true)
+@Serializable
 data class EditSprintRequest(
     val name: String,
+    @Serializable(with = DateSerializer::class)
     val estimated_start: LocalDate,
+    @Serializable(with = DateSerializer::class)
     val estimated_finish: LocalDate,
 )
 
-@JsonClass(generateAdapter = true)
+@Serializable
 data class EditWikiPageRequest(
     val content: String,
     val version: Int
 )
 
-@JsonClass(generateAdapter = true)
+@Serializable
 data class NewWikiLinkRequest(
     val href: String,
     val project: Long,

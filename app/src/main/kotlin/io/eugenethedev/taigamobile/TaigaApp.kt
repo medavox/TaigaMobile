@@ -3,11 +3,13 @@ package io.eugenethedev.taigamobile
 import android.app.Application
 import android.util.Log
 import com.google.android.material.color.DynamicColors
+import dagger.hilt.android.HiltAndroidApp
 import io.eugenethedev.taigamobile.BuildConfig
 import io.eugenethedev.taigamobile.dagger.AppComponent
 import io.eugenethedev.taigamobile.utils.FileLoggingTree
 import timber.log.Timber
 
+@HiltAndroidApp
 class TaigaApp : Application() {
 
     // logging

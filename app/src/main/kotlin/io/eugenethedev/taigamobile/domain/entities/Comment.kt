@@ -1,16 +1,19 @@
 package io.eugenethedev.taigamobile.domain.entities
 
-import com.squareup.moshi.Json
-import com.squareup.moshi.JsonClass
+import io.eugenethedev.taigamobile.dagger.DateTimeSerializer
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.JsonNames
 import java.time.LocalDateTime
 
-@JsonClass(generateAdapter = true)
+@Serializable
 data class Comment(
     val id: String,
-    @Json(name = "user") val author: User,
-    @Json(name = "comment") val text: String,
-    @Json(name = "created_at") val postDateTime: LocalDateTime,
-    @Json(name = "delete_comment_date") val deleteDate: LocalDateTime?
+    @JsonNames("user") val author: User,
+    @JsonNames("comment") val text: String,
+    @Serializable(with = DateTimeSerializer::class)
+    @JsonNames("created_at") val postDateTime: LocalDateTime,
+    @Serializable(with = DateTimeSerializer::class)
+    @JsonNames("delete_comment_date") val deleteDate: LocalDateTime?
 ) {
     var canDelete: Boolean = false
 }

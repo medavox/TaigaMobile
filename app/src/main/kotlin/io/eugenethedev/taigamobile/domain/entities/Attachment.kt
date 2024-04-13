@@ -1,12 +1,12 @@
 package io.eugenethedev.taigamobile.domain.entities
 
-import com.squareup.moshi.Json
-import com.squareup.moshi.JsonClass
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.JsonNames
 
-@JsonClass(generateAdapter = true)
+@Serializable
 data class Attachment(
     val id: Long,
     val name: String,
-    @Json(name = "size") val sizeInBytes: Long,
+    @JsonNames("size") val sizeInBytes: Long,
     val url: String
 )

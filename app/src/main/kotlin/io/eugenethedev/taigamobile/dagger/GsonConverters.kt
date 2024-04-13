@@ -1,29 +1,38 @@
 package io.eugenethedev.taigamobile.dagger
 
-import com.squareup.moshi.FromJson
-import com.squareup.moshi.ToJson
+import kotlinx.serialization.KSerializer
+import kotlinx.serialization.Serializer
+import kotlinx.serialization.encoding.Decoder
+import kotlinx.serialization.encoding.Encoder
 import java.time.*
 import java.time.format.DateTimeFormatter
 
-class LocalDateTypeAdapter {
-    @ToJson
-    fun toJson(value: LocalDate): String = DateTimeFormatter.ISO_LOCAL_DATE.format(value)
 
-    @FromJson
-    fun fromJson(input: String): LocalDate = input.toLocalDate()
-}
+@Serializer(forClass = LocalDate::class)
+object DateSerializer : KSerializer<LocalDate> {
+    private val formatter = DateTimeFormatter.ISO_LOCAL_DATE
 
-class LocalDateTimeTypeAdapter {
-    @ToJson
-    fun toJson(value: LocalDateTime): String {
-        return value.atZone(ZoneId.systemDefault())
-            .toInstant()
-            .toString()
+    override fun serialize(encoder: Encoder, value: LocalDate) {
+        encoder.encodeString(formatter.format(value))
     }
 
-    @FromJson
-    fun fromJson(input: String): LocalDateTime {
-        return Instant.parse(input)
+    override fun deserialize(decoder: Decoder): LocalDate {
+        return LocalDate.parse(decoder.decodeString(), formatter)
+    }
+}
+
+@Serializer(forClass = LocalDate::class)
+object DateTimeSerializer : KSerializer<LocalDateTime> {
+    private val formatter = DateTimeFormatter.ISO_LOCAL_DATE
+
+    override fun serialize(encoder: Encoder, value: LocalDateTime) {
+        encoder.encodeString(value.atZone(ZoneId.systemDefault())
+            .toInstant()
+            .toString())
+    }
+
+    override fun deserialize(decoder: Decoder): LocalDateTime {
+        return Instant.parse(decoder.decodeString())
             .atZone(ZoneId.systemDefault())
             .toLocalDateTime()
     }

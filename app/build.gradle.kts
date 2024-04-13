@@ -3,8 +3,9 @@ import com.android.build.api.dsl.AndroidSourceSet
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
-    id("com.google.devtools.ksp")
-
+    kotlin("kapt")
+    id("com.google.dagger.hilt.android")
+    kotlin("plugin.serialization") version "1.9.22"
 }
 
 val composeVersion = "1.1.1"
@@ -105,6 +106,7 @@ dependencies {
     implementation(libs.androidx.core.ktx.v170)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
 
     // ============================================================================================
     // CAREFUL WHEN UPDATING COMPOSE RELATED DEPENDENCIES - THEY CAN USE DIFFERENT COMPOSE VERSION!
@@ -145,33 +147,31 @@ dependencies {
     implementation(libs.kotlinx.coroutines.android)
     testImplementation(libs.kotlinx.coroutines.test)
 
-    // Moshi
-    implementation(libs.moshi.v1140)
-    ksp(libs.moshi.kotlin.codegen.v1140)
-
     // Retrofit 2
     implementation(libs.retrofit)
-    implementation(libs.converter.moshi)
 
     // OkHttp
     implementation(libs.okhttp)
     implementation(libs.logging.interceptor)
 
     // Dagger 2
-    val daggerVersion = "2.42"
     implementation(libs.dagger.android)
-    ksp(libs.dagger.android.processor)
-    ksp(libs.dagger.compiler)
+    kapt(libs.dagger.android.processor)
+    kapt(libs.dagger.compiler)
 
     // Timber
     implementation(libs.timber)
 
     // Markdown support (Markwon)
-    implementation(libs.core)
-    implementation(libs.image.coil)
+    implementation(libs.markwon)
+    implementation(libs.markwon.image.coil)
 
     // Compose material dialogs (color picker)
     implementation(libs.color)
+
+    implementation("com.google.dagger:hilt-android:2.44")
+    kapt("com.google.dagger:hilt-android-compiler:2.44")
+
 
     /**
      * Test frameworks & dependencies
@@ -181,7 +181,7 @@ dependencies {
     // Robolectric (run android tests on local host)
     testRuntimeOnly(libs.robolectric)
 
-    allTestsImplementation(libs.core.ktx)
+    allTestsImplementation(libs.test.core.ktx)
     allTestsImplementation(libs.androidx.runner)
     allTestsImplementation(libs.androidx.junit.ktx)
 
@@ -196,6 +196,12 @@ dependencies {
     // MockK
     testImplementation(libs.mockk)
 }
+
+// Allow references to generated code
+kapt {
+    correctErrorTypes = true
+}
+
 
 fun DependencyHandler.allTestsImplementation(dependencyNotation: Any) {
     testImplementation(dependencyNotation)
