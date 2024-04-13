@@ -2,14 +2,14 @@ package io.eugenethedev.taigamobile.ui.screens.main
 
 import androidx.lifecycle.*
 import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.lifecycle.HiltViewModel
 import io.eugenethedev.taigamobile.state.Session
 import io.eugenethedev.taigamobile.state.Settings
 import io.eugenethedev.taigamobile.TaigaApp
-import io.eugenethedev.taigamobile.dagger.AppComponent
 import javax.inject.Inject
 
-@AndroidEntryPoint
-class MainViewModel : ViewModel() {
+@HiltViewModel
+class MainViewModel @Inject constructor() : ViewModel() {
     @Inject lateinit var session: Session
     @Inject lateinit var settings: Settings
 

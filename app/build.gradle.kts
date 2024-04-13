@@ -5,7 +5,7 @@ plugins {
     alias(libs.plugins.jetbrainsKotlinAndroid)
     kotlin("kapt")
     id("com.google.dagger.hilt.android")
-    kotlin("plugin.serialization") version "1.9.22"
+    kotlin("plugin.serialization") version "1.8.22"
 }
 
 val composeVersion = "1.1.1"
@@ -71,13 +71,13 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
         isCoreLibraryDesugaringEnabled = true
     }
 
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "17"
         freeCompilerArgs = listOf("-Xopt-in=kotlin.RequiresOptIn")
     }
 
@@ -87,7 +87,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.11"
+        kotlinCompilerExtensionVersion = "1.4.8"
     }
 
     lint { 
@@ -107,10 +107,6 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
-
-    // ============================================================================================
-    // CAREFUL WHEN UPDATING COMPOSE RELATED DEPENDENCIES - THEY CAN USE DIFFERENT COMPOSE VERSION!
-    // ============================================================================================
 
     // Main Compose dependencies
     implementation("androidx.compose.ui:ui:$composeVersion")
@@ -153,11 +149,6 @@ dependencies {
     // OkHttp
     implementation(libs.okhttp)
     implementation(libs.logging.interceptor)
-
-    // Dagger 2
-    implementation(libs.dagger.android)
-    kapt(libs.dagger.android.processor)
-    kapt(libs.dagger.compiler)
 
     // Timber
     implementation(libs.timber)

@@ -2,9 +2,9 @@ package io.eugenethedev.taigamobile.ui.screens.team
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import dagger.hilt.android.lifecycle.HiltViewModel
 import io.eugenethedev.taigamobile.state.Session
 import io.eugenethedev.taigamobile.TaigaApp
-import io.eugenethedev.taigamobile.dagger.AppComponent
 import io.eugenethedev.taigamobile.domain.entities.TeamMember
 import io.eugenethedev.taigamobile.domain.repositories.IUsersRepository
 import io.eugenethedev.taigamobile.ui.utils.MutableResultFlow
@@ -15,7 +15,8 @@ import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class TeamViewModel : ViewModel() {
+@HiltViewModel
+class TeamViewModel @Inject constructor(): ViewModel() {
     @Inject lateinit var usersRepository: IUsersRepository
     @Inject lateinit var session: Session
 

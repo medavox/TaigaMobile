@@ -18,7 +18,6 @@ class FileLoggingTree(private val basePath: String, private val minPriority: Int
 
     override fun isLoggable(tag: String?, priority: Int) = priority >= minPriority
 
-    @SuppressLint("LogNotTimber")
     override fun log(priority: Int, tag: String?, message: String, t: Throwable?) {
         try {
             val fileNameTimeStamp: String = SimpleDateFormat(

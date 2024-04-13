@@ -2,9 +2,7 @@ package io.eugenethedev.taigamobile.state
 
 import android.content.Context
 import androidx.core.content.edit
-import com.squareup.moshi.Moshi
 import io.eugenethedev.taigamobile.domain.entities.FiltersData
-import io.eugenethedev.taigamobile.domain.entities.FiltersDataJsonAdapter
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob

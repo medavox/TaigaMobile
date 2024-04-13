@@ -3,9 +3,9 @@ package io.eugenethedev.taigamobile.ui.screens.wiki.page
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.lifecycle.HiltViewModel
 import io.eugenethedev.taigamobile.R
 import io.eugenethedev.taigamobile.TaigaApp
-import io.eugenethedev.taigamobile.dagger.AppComponent
 import io.eugenethedev.taigamobile.domain.entities.Attachment
 import io.eugenethedev.taigamobile.domain.entities.User
 import io.eugenethedev.taigamobile.domain.entities.WikiLink
@@ -20,8 +20,8 @@ import kotlinx.coroutines.launch
 import java.io.InputStream
 import javax.inject.Inject
 
-@AndroidEntryPoint
-class WikiPageViewModel : ViewModel() {
+@HiltViewModel
+class WikiPageViewModel @Inject constructor() : ViewModel() {
 
     @Inject
     lateinit var wikiRepository: IWikiRepository

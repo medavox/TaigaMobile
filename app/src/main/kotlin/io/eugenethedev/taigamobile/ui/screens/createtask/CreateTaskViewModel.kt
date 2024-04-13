@@ -3,8 +3,8 @@ package io.eugenethedev.taigamobile.ui.screens.createtask
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.lifecycle.HiltViewModel
 import io.eugenethedev.taigamobile.TaigaApp
-import io.eugenethedev.taigamobile.dagger.AppComponent
 import io.eugenethedev.taigamobile.domain.entities.CommonTask
 import io.eugenethedev.taigamobile.domain.entities.CommonTaskType
 import io.eugenethedev.taigamobile.domain.repositories.ITasksRepository
@@ -15,8 +15,8 @@ import io.eugenethedev.taigamobile.ui.utils.loadOrError
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-@AndroidEntryPoint
-class CreateTaskViewModel : ViewModel() {
+@HiltViewModel
+class CreateTaskViewModel @Inject constructor() : ViewModel() {
     @Inject lateinit var tasksRepository: ITasksRepository
     @Inject lateinit var session: Session
 
